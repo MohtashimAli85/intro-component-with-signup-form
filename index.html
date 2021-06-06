@@ -102,6 +102,9 @@
         if (value[1] == "") {
           document.getElementById(value[0]).classList.add('input');
           document.getElementById(value[0] + 'warning').classList.add('warning');
+        }else{
+          document.getElementById(value[0]).classList.remove('input');
+          document.getElementById(value[0] + 'warning').classList.remove('warning');
         }
 
       });
