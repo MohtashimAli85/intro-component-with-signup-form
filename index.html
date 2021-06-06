@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Intro component with sign up form</title>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="text">
+      <h3>Learn to code by watching others</h3>
+      <p class="brief"> See how experienced developers solve problems in real-time. Watching scripted tutorials is
+        great,
+        but understanding how developers think is invaluable. </p>
+    </div>
+    <div>
+      <div class="banner">
+        <p><strong>Try it free 7 days </strong>then $20/mo. thereafter</p>
+      </div>
+      <!-- form -->
+      <form action="" id="form">
+        <div class="inputbox">
+          <input type="text" name="firstname" id="firstname" placeholder="First Name"><span id="firstnamewarning">First
+            Name
+            cannot be empty</span>
+        </div>
+
+
+        <div class="inputbox">
+          <input type="text" name="lastname" id="lastname" placeholder="Last Name"><span id="lastnamewarning">Last Name
+            cannot be empty</span>
+        </div>
+
+        <div class="inputbox">
+          <input type="email" name="email" id="email" placeholder="Email Address"><span id="emailwarning">Email Name
+            cannot be empty</span>
+        </div>
+        <div class="inputbox">
+          <input type="password" name="password" id="password" placeholder="Password"><span id="passwordwarning">Last
+            Password
+            cannot be empty</span>
+        </div>
+        <button type="button" class="btnsubmit">Claim Your Free Trial</button>
+        <p class="terms">By clicking the buttons, you are agreeing to our <strong class="red">Terms and
+            Services</strong>
+        </p>
+      </form>
+    </div>
+  </header>
+
+  <script>
+    let submitbtn = document.querySelector('.btnsubmit');
+    let input = document.querySelector('form');
+    input.addEventListener('keypress', remove);
+    // let names = {
+    //   1: "firstname",
+    //   2: "lastname",
+    //   3: "email",
+    //   4: "password"
+    // };
+    let values = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: ''
+    };
+
+    function getvalues() {
+      values.firstname = document.getElementById('firstname').value,
+        values.lastname = document.getElementById('lastname').value,
+        values.email = document.getElementById('email').value,
+        values.password = document.getElementById('password').value;
+
+    }
+
+    function remove() {
+      getvalues();
+      Object.entries(values).forEach(value => {
+
+        console.log(value[1]);
+        if (value[1] != "") {
+          console.log("kkk");
+          document.getElementById(value[0]).classList.remove('input');
+          document.getElementById(value[0] + 'warning').classList.remove('warning');
+        }
+      });
+
+    }
+
+    function validationform() {
+      getvalues();
+      Object.entries(values).forEach(value => {
+        if (value[1] == "") {
+          document.getElementById(value[0]).classList.add('input');
+          document.getElementById(value[0] + 'warning').classList.add('warning');
+        }
+
+      });
+    }
+
+    submitbtn.addEventListener('click', validationform);
+    // input.addEventListener('keypress', remove);
+  </script>
+</body>
+
+</html>
